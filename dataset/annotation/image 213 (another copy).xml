@@ -1,0 +1,26 @@
+<annotation>
+	<folder>snap</folder>
+	<filename>image 213 (another copy).png</filename>
+	<path>/home/lenovo/snap/image 213 (another copy).png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1897</width>
+		<height>916</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>menu</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>29</xmin>
+			<ymin>12</ymin>
+			<xmax>1868</xmax>
+			<ymax>260</ymax>
+		</bndbox>
+	</object>
+</annotation>

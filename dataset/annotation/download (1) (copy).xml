@@ -1,0 +1,26 @@
+<annotation>
+	<folder>snap</folder>
+	<filename>download (1) (copy).png</filename>
+	<path>/home/lenovo/snap/download (1) (copy).png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>800</width>
+		<height>600</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>menu-bar</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>120</xmin>
+			<ymin>106</ymin>
+			<xmax>691</xmax>
+			<ymax>192</ymax>
+		</bndbox>
+	</object>
+</annotation>

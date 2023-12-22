@@ -1,0 +1,26 @@
+<annotation>
+	<folder>LN Redesign- ML (3)</folder>
+	<filename>Screenshot from 2023-12-19 10-51-28.png</filename>
+	<path>/home/lenovo/LN Redesign- ML (3)/Screenshot from 2023-12-19 10-51-28.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1256</width>
+		<height>605</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>menu-bar</name>
+		<pose>Unspecified</pose>
+		<truncated>1</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>1</xmin>
+			<ymin>4</ymin>
+			<xmax>1248</xmax>
+			<ymax>65</ymax>
+		</bndbox>
+	</object>
+</annotation>

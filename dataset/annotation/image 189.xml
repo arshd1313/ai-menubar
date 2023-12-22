@@ -1,0 +1,26 @@
+<annotation>
+	<folder>snap</folder>
+	<filename>image 189.png</filename>
+	<path>/home/lenovo/snap/image 189.png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1855</width>
+		<height>854</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>menu-bar</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>17</xmin>
+			<ymin>11</ymin>
+			<xmax>1799</xmax>
+			<ymax>288</ymax>
+		</bndbox>
+	</object>
+</annotation>

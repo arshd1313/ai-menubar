@@ -1,0 +1,26 @@
+<annotation>
+	<folder>snap</folder>
+	<filename>landing_page (copy).jpg</filename>
+	<path>/home/lenovo/snap/landing_page (copy).jpg</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>1366</width>
+		<height>1024</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>menu</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>40</xmin>
+			<ymin>10</ymin>
+			<xmax>1335</xmax>
+			<ymax>152</ymax>
+		</bndbox>
+	</object>
+</annotation>

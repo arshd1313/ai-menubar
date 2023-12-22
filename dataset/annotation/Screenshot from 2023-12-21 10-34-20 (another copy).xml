@@ -1,0 +1,26 @@
+<annotation>
+	<folder>snap</folder>
+	<filename>Screenshot from 2023-12-21 10-34-20 (another copy).png</filename>
+	<path>/home/lenovo/snap/Screenshot from 2023-12-21 10-34-20 (another copy).png</path>
+	<source>
+		<database>Unknown</database>
+	</source>
+	<size>
+		<width>799</width>
+		<height>599</height>
+		<depth>3</depth>
+	</size>
+	<segmented>0</segmented>
+	<object>
+		<name>menu</name>
+		<pose>Unspecified</pose>
+		<truncated>0</truncated>
+		<difficult>0</difficult>
+		<bndbox>
+			<xmin>100</xmin>
+			<ymin>147</ymin>
+			<xmax>690</xmax>
+			<ymax>217</ymax>
+		</bndbox>
+	</object>
+</annotation>
