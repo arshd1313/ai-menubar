@@ -1,4 +1,4 @@
-absl-py==1.4.0
+absl-py
 # accelerate==0.24.1
 # aiofiles==23.2.1
 # aiohttp==3.9.1
@@ -13,7 +13,7 @@ absl-py==1.4.0
 # arrow==1.3.0
 # asttokens==2.4.1
 # astunparse==1.6.3
-async-lru==2.0.4
+async-lru
 # async-timeout==4.0.3
 # attrs==23.1.0
 # audioread==3.0.1
@@ -66,8 +66,8 @@ async-lru==2.0.4
 # exceptiongroup==1.2.0
 # executing==2.0.1
 # fairseq==0.12.2
-fastapi==0.68.0
-fasteners==0.14.1
+fastapi
+fasteners
 # fastjsonschema==2.19.0
 # filelock==3.13.1
 # fire==0.5.0
@@ -108,11 +108,11 @@ fasteners==0.14.1
 # hydra-core==1.0.7
 # hyperlink==21.0.0
 # idna==2.10
-importlib-metadata==6.8.0
-importlib-resources==6.1.1
+importlib-metadata
+importlib-resources
 # incremental==22.10.0
 #install==1.3.5
-ipykernel==6.27.0
+ipykernel
 # ipynb-py-convert==0.4.6
 # ipython==8.12.3
 # ipython-genutils==0.2.0
@@ -127,22 +127,22 @@ ipykernel==6.27.0
 # json5==0.9.14
 # jsonschema==4.20.0
 # jsonschema-specifications==2023.11.1
-jupyter==1.0.0
-jupyter-console==6.6.3
-jupyter-events==0.9.0
-jupyter-lsp==2.2.0
-jupyter-server==1.24.0
-jupyter_client==8.6.0
-jupyter_core==5.5.0
-jupyter_server_terminals==0.4.4
-jupyterlab==3.0.7
-jupyterlab-widgets==3.0.9
-# jupyterlab_pygments==0.3.0
+jupyter
+jupyter-console
+jupyter-events
+jupyter-lsp
+jupyter-server
+jupyter_client
+jupyter_core
+jupyter_server_terminals
+jupyterlab
+jupyterlab-widgets
+jupyterlab_pygments
 # jupyterlab_server==2.25.2
-# jupytext==1.16.0
-# kaggle==1.5.16
-keras==2.9.0
-Keras-Preprocessing==1.1.2
+jupytext
+#kaggle==1.5.16
+keras
+Keras-Preprocessing
 # keyring==18.0.1
 # kiwisolver==1.4.5
 # labelImg==1.8.6
@@ -182,12 +182,13 @@ Keras-Preprocessing==1.1.2
 # netifaces==0.10.4
 networkx==3.1
 neural-structured-learning==1.4.0
-notebook==6.4.5
-notebook_shim==0.2.3
-numba==0.53.0
-numpy==1.24.4
-nvidia-cublas-cu12==12.1.3.1
-nvidia-cuda-cupti-cu12==12.1.105
+notebook
+notebook_shim
+numba
+numpy
+python
+#nvidia-cublas-cu12==12.1.3.1
+#nvidia-cuda-cupti-cu12==12.1.105
 # nvidia-cuda-nvrtc-cu12==12.1.105
 # nvidia-cuda-runtime-cu12==12.1.105
 # nvidia-cudnn-cu12==8.9.2.26
@@ -202,11 +203,11 @@ nvidia-cuda-cupti-cu12==12.1.105
 #oauthlib==3.1.0
 # olefile==0.46
 # omegaconf==2.0.6
-onnx==1.15.0
-onnxruntime==1.16.3
-opencv-contrib-python==4.8.1.78
-opencv-python==4.8.1.78
-opencv-python-headless==4.8.0.74
+onnx
+onnxruntime
+opencv-contrib-python
+opencv-python
+opencv-python-headless
 # opt-einsum==3.3.0
 # orjson==3.9.10
 # overrides==7.4.0
@@ -216,8 +217,8 @@ opencv-python-headless==4.8.0.74
 # paramiko==2.6.0
 # parso==0.8.3
 # pexpect==4.6.0
-pickleshare==0.7.5
-Pillow==10.1.0
+pickleshare
+Pillow
 # pkgutil_resolve_name==1.3.10
 # platformdirs==4.0.0
 # plotly==5.18.0
@@ -259,14 +260,14 @@ Pillow==10.1.0
 # pysnmp==4.4.12
 # pytesseract==0.3.10
 # python-apt==2.0.1+ubuntu0.20.4.1
-python-dateutil==2.8.2
+python-dateutil
 # python-debian===0.1.36ubuntu1
-python-dotenv==1.0.0
-python-json-logger==2.0.7
-python-magic==0.4.27
-python-multipart==0.0.6
-python-slugify==8.0.1
-python-version==0.0.2
+#python-dotenv==1.0.0
+python-json-logger
+python-magic
+python-multipart
+python-slugify
+python-version
 # pyttsx3==2.90
 # pytz==2023.3.post1
 # pyxdg==0.26
@@ -278,10 +279,10 @@ python-version==0.0.2
 # referencing==0.31.0
 # regex==2023.10.3
 # reportlab==3.5.34
-requests==2.31.0
-requests-oauthlib==1.3.1
-requests-toolbelt==1.0.0
-requests-unixsocket==0.2.0
+requests
+requests-oauthlib
+requests-toolbelt
+requests-unixsocket
 # resampy==0.4.2
 # rfc3339-validator==0.1.4
 # rfc3986-validator==0.1.1
@@ -307,7 +308,7 @@ sklearn==0.0.post11
 # soupsieve==2.5
 # soxr==0.3.7
 # SQLAlchemy==1.3.12
-stack-data==0.6.3
+stack-data
 # starlette==0.14.2
 # supervision==0.17.1
 # sympy==1.12
@@ -315,11 +316,11 @@ stack-data==0.6.3
 # tabulate==0.9.0
 # template==0.7.6
 # tenacity==8.2.3
-tensor==0.3.6
-tensorboard==2.9.1
-tensorboard-data-server==0.6.1
-tensorboard-plugin-wit==1.8.1
-tensorflow==2.9.3
+tensor
+tensorboard
+tensorboard-data-server
+tensorboard-plugin-wit
+tensorflow
 # tensorflow-addons==0.21.0
 # tensorflow-datasets==4.9.0
 # tensorflow-estimator==2.9.0
@@ -329,7 +330,6 @@ tensorflow==2.9.3
 # tensorflow-model-optimization==0.7.5
 # termcolor==2.3.0
 # terminado==0.18.0
-
 # text-unidecode==1.3
 # tf-models-official==2.3.0
 # tf-slim==1.1.0
@@ -365,7 +365,7 @@ tensorflow==2.9.3
 # urllib3==1.25.11
 # usb-creator==0.3.7
 # uuid==1.30
-uvicorn==0.20.0
+uvicorn
 # uvloop==0.19.0
 # wadllib==1.3.3
 # watchfiles==0.21.0
@@ -380,5 +380,5 @@ uvicorn==0.20.0
 # xkit==0.0.0
 # xxhash==3.4.1
 # yarl==1.9.3
-zipp==3.17.0
+zipp
 # zope.interface==6.1
