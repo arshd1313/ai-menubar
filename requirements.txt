@@ -70,8 +70,8 @@ fastapi
 fasteners
 fastjsonschema
 filelock
-fire=
-Flask=
+fire
+Flask
 flatbuffers
 fonttools
 frozenlist
