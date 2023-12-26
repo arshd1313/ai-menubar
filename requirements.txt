@@ -1,26 +1,26 @@
 
 stream-csv
-
+multiprocessing
 fastapi
-
+bootstrap4
 numpy
 onnx2onnx
 onnxruntime
 opencv-contrib-python
 flatter
-
+fastapi-responses
 pillow
 opencv-python
 yaml8
 requests-default
 responses
-
+stream-csv
 wf-elementtree
-
+subprocess32
 reportlab2
 requests
 resampy
-
+sockets
 scikit-learn
 
 sip2
