@@ -328,5 +328,5 @@ zope.interface
 language-selector
 launchpadlib
 lazr.restfulclient
-lazr.uri==
+lazr.uri
 lazy_loader
