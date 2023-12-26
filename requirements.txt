@@ -294,7 +294,7 @@ requests-unixsocket
 # simplejson==3.16.0
 # sip==4.19.21
 # six==1.14.0
-sklearn==0.0.post11
+sklearn
 # smmap==5.0.1
 # sniffio==1.3.0
 # sounddevice==0.4.6
