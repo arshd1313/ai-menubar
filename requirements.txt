@@ -6,9 +6,8 @@ fonttools
 jupytext
 Keras
 neural-structured-learning
-numba
 numpy
-onnx
+onnx2onnx
 onnxruntime
 opencv-contrib-python
 opencv-python
@@ -19,10 +18,9 @@ pandocfilters
 pickleshare
 pillow
 opencv-python
-io
-yaml
-safeloader
-uploadfile
+yaml8
+requests-default
+auto-uploadfile-test
 responses
 glob2
 wf-elementtree
