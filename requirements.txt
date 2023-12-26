@@ -1,6 +1,4 @@
 pip
-dnn
-cnn-framework
 
 process-fastq
 yolo5
@@ -9,13 +7,12 @@ labels
 fastapi
 fonttools
 jupytext
-Keras
+
 neural-structured-learning
 numpy
 onnx2onnx
 onnxruntime
 opencv-contrib-python
-
 flatter
 pickleshare
 pillow
