@@ -1,81 +1,112 @@
+# app.py
+
 from fastapi import FastAPI, File, UploadFile
-import tempfile
-import json
-import onnxruntime
-import numpy as np
+from fastapi.responses import StreamingResponse
 import cv2
-from fastapi.responses import FileResponse
+import numpy as np
+import io
+import yaml
+from yaml.loader import SafeLoader
 
 app = FastAPI()
 
-# Load the ONNX model
-onnx_path = "/home/lenovo/temp-image-detec/Model5/weights/best.onnx"
-api_uri = onnxruntime.InferenceSession(onnx_path)
+# Load YAML
+with open('data.yaml', mode='r') as f:
+    data_yaml = yaml.load(f, Loader=SafeLoader)
 
-def get_temp_file_path(data, file_extension):
-    _, temp_filename = tempfile.mkstemp(suffix=f".{file_extension}")
-    with open(temp_filename, 'w') as temp_file:
-        json.dump(data, temp_file)  # Adjust this based on your model's output format
-    return temp_filename
+labels = data_yaml['names']
 
-def run_inference_onnx(image_data):
-    # Implement your custom ONNX model inference logic here
-    input_data = preprocess_image(image_data)
-    input_name = api_uri.get_inputs()[0].name
-    input_data = np.expand_dims(input_data, axis=0)  # Assuming batch size is 1
+# Load YOLO model
+yolo = cv2.dnn.readNetFromONNX('/home/lenovo/temp-image-detec/Model5/weights/best.onnx')
+yolo.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+yolo.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
-    # Check the expected shape of the input tensor
-    expected_shape = api_uri.get_inputs()[0].shape
-    print(f"Expected shape of input tensor: {expected_shape}")
+# app.py
 
-    result = api_uri.run(None, {input_name: input_data})
-    # Convert NumPy arrays to lists for JSON serialization
-    result_as_list = [arr.tolist() for arr in result]
-    return result_as_list
+# ... (previous code)
+def get_prediction(image):
+    # Get YOLO prediction from the image
+    row, col, d = image.shape
+    
+    # Convert image into a square image (array)
+    max_rc = max(row, col)
+    input_image = np.zeros((max_rc, max_rc, 3), dtype=np.uint8)
+    input_image[0:row, 0:col] = image
+    
+    # Get prediction from the square array
+    INPUT_WH_YOLO = 640
+    blob = cv2.dnn.blobFromImage(input_image, 1/255, (INPUT_WH_YOLO, INPUT_WH_YOLO), swapRB=True, crop=False)
+    yolo.setInput(blob)
+    preds = yolo.forward()
+    
+    return preds, input_image, INPUT_WH_YOLO
 
-def preprocess_image(image_data):
-    image = cv2.imdecode(np.frombuffer(image_data, np.uint8), cv2.IMREAD_COLOR)
-    # Resize the image to match the expected input shape
-    image = cv2.resize(image, (640, 640)).astype(np.float32)
-    # Normalize the image
-    image = image / 255.0
-    # Transpose the image to match the shape (3, 640, 640)
-    image = np.transpose(image, (2, 0, 1))
+# ... (previous code)
+
+
+def non_maximum_suppression(preds, input_image, INPUT_WH_YOLO, labels):
+    detections = preds[0]
+    boxes = []
+    confidences = []
+    classes = []
+
+    image_w, image_h = input_image.shape[:2]
+    x_factor = image_w / INPUT_WH_YOLO
+    y_factor = image_h / INPUT_WH_YOLO
+
+    for i in range(len(detections)):
+        row = detections[i]
+        confidence = row[4]
+
+        if confidence > 0.055:
+            class_score = row[5:].max()
+            class_id = row[5:].argmax()
+
+            if class_score > 0.055:
+                cx, cy, w, h = row[0:4]
+                left = int((cx - 0.5*w) * x_factor)
+                top = int((cy - 0.5*h) * y_factor)
+                width = int(w * x_factor)
+                height = int(h * y_factor)
+
+                box = np.array([left, top, width, height])
+
+                confidences.append(confidence)
+                boxes.append(box)
+                classes.append(class_id)
+
+    boxes_np = np.array(boxes).tolist()
+    confidences_np = np.array(confidences).tolist()
+
+    index = cv2.dnn.NMSBoxes(boxes_np, confidences_np, 0.0025, 0.0045).flatten()
+
+    return index, boxes_np, confidences_np, classes
+
+def draw_bounding_boxes(image, index, boxes_np, confidences_np, classes, labels):
+    for ind in index:
+        x, y, w, h = boxes_np[ind]
+        bb_conf = int(confidences_np[ind] * 100)
+        class_id = classes[ind]
+        class_name = labels[class_id]
+
+        text = f'{class_name}: {bb_conf}%'
+
+        cv2.rectangle(image, (x, y), (x+w, y+h), (0, 255, 0), 2)
+        cv2.rectangle(image, (x, y-30), (x+w, y), (255, 255, 255), -1)
+        cv2.putText(image, text, (x, y-10), cv2.FONT_HERSHEY_PLAIN, 0.7, (0, 0, 0), 1)
+
     return image
 
-def save_image(image_data, output_path):
-    image = cv2.imdecode(np.frombuffer(image_data, np.uint8), cv2.IMREAD_COLOR)
-    # Save the image using OpenCV
-    cv2.imwrite(output_path, image)
-
-def draw_bounding_box(image, bounding_box):
-    # Assuming bounding_box is a NumPy array with shape (4,)
-    x, y, w, h = bounding_box
-    x, y, w, h = int(x), int(y), int(w), int(h)  # Convert to integers
-
-    # Draw the bounding box
-    cv2.rectangle(image, (x, y), (x + w, y + h), (0, 255, 0), 2)
-    cv2.rectangle(image, (x, y - 30), (x + w, y), (255, 255, 255), -1)
-    confidence = 0.09  # You need to replace this with the actual confidence score
-    text = f'Confidence: {confidence}%'
-    cv2.putText(image, text, (x, y - 10), cv2.FONT_HERSHEY_PLAIN, 0.7, (0, 0, 0), 1)
-
-
-
-@app.post("/process_image")
-async def process_image(file: UploadFile = File(...)):
+@app.post("/detect")
+async def detect_objects(file: UploadFile = File(...)):
     contents = await file.read()
-
-    # Process the result using your custom ONNX model
-    processed_result = run_inference_onnx(contents)
-    bounding_box = processed_result[0]  # Assuming the bounding box is the first element in the result
-
-    # Save the processed image
-    output_image_path = "output.jpg"
     image = cv2.imdecode(np.frombuffer(contents, np.uint8), cv2.IMREAD_COLOR)
-    draw_bounding_box(image, bounding_box)
-    cv2.imwrite(output_image_path, image)
 
-    # Return the processed result as a downloadable file
-    return FileResponse(output_image_path, filename="output.jpg", media_type="image/jpeg")
+    preds, input_image, INPUT_WH_YOLO = get_prediction(image)
+    index, boxes_np, confidences_np, classes = non_maximum_suppression(preds, input_image, INPUT_WH_YOLO, labels)
+    result_image = draw_bounding_boxes(image.copy(), index, boxes_np, confidences_np, classes, labels)
 
+    _, img_encoded = cv2.imencode('.png', result_image)
+    return StreamingResponse(io.BytesIO(img_encoded.tobytes()), media_type="image/png")
+# To run the FastAPI application, use the following command:
+# uvicorn app:app --reload
