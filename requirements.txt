@@ -16,3 +16,4 @@ repr
 pybyte
 pyproject-toml
 uvicorn
+opencv-python
