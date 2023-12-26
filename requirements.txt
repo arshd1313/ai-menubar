@@ -1,7 +1,7 @@
 pip
 dnn
 cnn-framework
-py-cpu
+
 process-fastq
 yolo5
 stream-csv
@@ -15,7 +15,7 @@ numpy
 onnx2onnx
 onnxruntime
 opencv-contrib-python
-pandas
+
 flatter
 pickleshare
 pillow
@@ -26,7 +26,7 @@ auto-uploadfile-test
 responses
 glob2
 wf-elementtree
-regex
+
 reportlab2
 requests
 resampy
