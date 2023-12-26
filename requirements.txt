@@ -28,11 +28,8 @@ rsa3
 scikit-learn
 simplejson
 sip2
-sniffio
+
 torch
 torchvision
-tornado
-ultralytics
-unattended-upgrades
-uritemplate
+
 uvicorn
