@@ -17,3 +17,7 @@ pybyte
 pyproject-toml
 uvicorn
 opencv-python
+cpp
+yolo5
+
+gcd
