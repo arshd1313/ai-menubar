@@ -1,4 +1,3 @@
-
 pip
 fastapi
 fasteners
@@ -35,7 +34,6 @@ scikit-learn
 simplejson
 sip2
 six
-smmap
 sniffio
 torch
 torchvision
@@ -43,6 +41,4 @@ tornado
 ultralytics
 unattended-upgrades
 uritemplate
-urllib3
 uvicorn
-uvloop
