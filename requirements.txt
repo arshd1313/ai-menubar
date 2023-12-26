@@ -20,5 +20,7 @@ opencv-python
 cpp
 yolo5
 api
-
+onnx
 gcd
+CUDA
+torch
