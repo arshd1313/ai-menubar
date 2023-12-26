@@ -1,7 +1,5 @@
 pip
 fastapi
-fasteners
-flatbuffers
 fonttools
 jupytext
 Keras
@@ -10,9 +8,6 @@ numpy
 onnx2onnx
 onnxruntime
 opencv-contrib-python
-opencv-python
-opencv-python-headless
-opt-einsum
 pandas
 flatter
 pickleshare
@@ -33,7 +28,6 @@ rsa3
 scikit-learn
 simplejson
 sip2
-six
 sniffio
 torch
 torchvision
