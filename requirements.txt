@@ -206,7 +206,7 @@ opencv-python-headless
 # orjson==3.9.10
 # overrides==7.4.0
 # packaging==23.2
- pandas==2.0.3
+ pandas
 # pandocfilters==1.5.0
 # paramiko==2.6.0
 # parso==0.8.3
@@ -374,5 +374,5 @@ uvicorn
 # xkit==0.0.0
 # xxhash==3.4.1
 # yarl==1.9.3
-zipp
+#zipp
 # zope.interface==6.1
