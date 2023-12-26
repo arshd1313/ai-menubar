@@ -22,5 +22,5 @@ yolo5
 api
 onnx
 gcd
-CUDA
+cuda-hybrid-CUDA-HYBRID
 torch
