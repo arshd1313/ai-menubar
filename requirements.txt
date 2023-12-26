@@ -329,7 +329,6 @@ tensorflow-metadata==1.13.0
 tensorflow-model-optimization==0.7.5
 termcolor==2.3.0
 terminado==0.18.0
-text-to-speech @ file:///home/lenovo/Desktop/BMG/ai-model/text-to-speech
 text-unidecode==1.3
 tf-models-official==2.3.0
 tf-slim==1.1.0
