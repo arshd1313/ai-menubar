@@ -1,6 +1,6 @@
 datasets
 fastapi
-model5
+
 onnx
 file
 fileupload
