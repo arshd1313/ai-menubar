@@ -3,28 +3,9 @@ fastapi
 fasteners
 flatbuffers
 fonttools
-ipykernel
-ipynb-py-convert
-ipython
-ipython-genutils
-ipywidgets
-jupyter
-jupyter-console
-jupyter-events
-jupyter-lsp
-jupyter-server
-jupyter_client
-jupyter_core
-jupyter_server_terminals
-jupyterlab
-jupyterlab-widgets
-jupyterlab_pygments
-jupyterlab_server
 jupytext
 
 Keras
-
-
 neural-structured-learning
 numba
 numpy
@@ -38,15 +19,14 @@ pandas
 pandocfilters
 pickleshare
 pillow
-cv2
+opencv-python
 io
 yaml
 safeloader
 uploadfile
 responses
-streamingresponse
-glob
-elementtree
+glob2
+wf-elementtree
 
 
 regex
