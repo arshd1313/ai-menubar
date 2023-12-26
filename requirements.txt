@@ -1,14 +1,10 @@
-pip
 
 process-fastq
 yolo5
 stream-csv
 labels
 fastapi
-fonttools
 jupytext
-
-neural-structured-learning
 numpy
 onnx2onnx
 onnxruntime
