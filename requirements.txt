@@ -1,6 +1,6 @@
 
 process-fastq
-yolo5
+
 stream-csv
 labels
 fastapi
@@ -23,10 +23,9 @@ wf-elementtree
 reportlab2
 requests
 resampy
-rpds-py
-rsa3
+
 scikit-learn
-simplejson
+
 sip2
 
 torch
