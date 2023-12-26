@@ -1,6 +1,6 @@
 datasets
 fastapi
-
+compose-struct
 onnx
 file
 fileupload
@@ -10,6 +10,8 @@ numpy
 streamlit-authenticator
 yolo
 parser201
-functools
 wf-elementtree
-
+compose
+repr
+pybyte
+pyproject-toml
