@@ -1,4 +1,11 @@
 pip
+dnn
+cnn-framework
+py-cpu
+process-fastq
+yolo5
+stream-csv
+labels
 fastapi
 fonttools
 jupytext
