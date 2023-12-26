@@ -19,5 +19,6 @@ uvicorn
 opencv-python
 cpp
 yolo5
+api
 
 gcd
