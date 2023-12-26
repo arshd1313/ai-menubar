@@ -15,9 +15,9 @@ pillow
 opencv-python
 yaml8
 requests-default
-auto-uploadfile-test
+
 responses
-glob2
+
 wf-elementtree
 
 reportlab2
