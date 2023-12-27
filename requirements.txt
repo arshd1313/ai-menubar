@@ -7,13 +7,11 @@ labelImg
 fastapi
 uvicorn
 onnx-simplifier
-yolov5
 sockets
 runner
 mesa
 loader
 importer
-pytest-bootstrap
 dnn
 onnx
 seaborn
