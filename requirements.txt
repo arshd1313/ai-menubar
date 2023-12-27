@@ -1,13 +1,11 @@
 numpy
 pandas
 matplotlib
-opencv-python==4.8.1
+opencv-python
 jupyter
 labelImg
 fastapi
 uvicorn
-yolo
-
 gcd
 sockets
 runner
