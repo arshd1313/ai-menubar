@@ -1,4 +1,5 @@
 # app.py
+import onnxruntime
 
 from fastapi import FastAPI, File, UploadFile
 from fastapi.responses import StreamingResponse
@@ -12,6 +13,7 @@ app = FastAPI()
 onnx_file_path = '/home/lenovo/temp-image-detec/Model5/weights/best.onnx'
 yolo = cv2.dnn.readNetFromONNX(onnx_file_path)
 yolo.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+ort_session = onnxruntime.InferenceSession(onnx_file_path)
 # Load YAML
 with open('data.yaml', mode='r') as f:
     data_yaml = yaml.load(f, Loader=SafeLoader)
