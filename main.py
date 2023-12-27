@@ -9,7 +9,9 @@ import yaml
 from yaml.loader import SafeLoader
 
 app = FastAPI()
-
+onnx_file_path = '/home/lenovo/temp-image-detec/Model5/weights/best.onnx'
+yolo = cv2.dnn.readNetFromONNX(onnx_file_path)
+yolo.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
 # Load YAML
 with open('data.yaml', mode='r') as f:
     data_yaml = yaml.load(f, Loader=SafeLoader)
