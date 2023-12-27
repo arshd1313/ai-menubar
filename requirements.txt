@@ -7,7 +7,7 @@ labelImg
 fastapi
 uvicorn
 yolo
-functools
+
 gcd
 sockets
 runner
