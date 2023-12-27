@@ -7,3 +7,12 @@ labelImg
 fastapi
 uvicorn
 yolo
+functools
+gcd
+sockets
+runner
+loader
+importer
+pytest-bootstrap
+dnn
+onnx
