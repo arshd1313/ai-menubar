@@ -6,6 +6,8 @@ jupyter
 labelImg
 fastapi
 uvicorn
+onnx-simplifier
+yolov5
 gcd
 sockets
 runner
