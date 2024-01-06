@@ -16,7 +16,7 @@ numpy
 onnx
 
 pandas
-pickle
+
 
 
 pydantic
