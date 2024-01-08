@@ -41,7 +41,7 @@ tensorflow-model-optimization
 
 torch
 pytesseract
-json    
+ 
 
 uvicorn
 
