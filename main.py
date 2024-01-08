@@ -8,9 +8,14 @@ import numpy as np
 import io
 import yaml
 from yaml.loader import SafeLoader
+import onnxruntime
+import pytesseract 
+import json
+
+
 
 app = FastAPI()
-onnx_file_path = '/home/lenovo/temp-image-detec/Model5/weights/best.onnx'
+onnx_file_path = '/home/ahuja/Desktop/menubar-detection/ai-menubar/Model5/weights/best.onnx'
 yolo = cv2.dnn.readNetFromONNX(onnx_file_path)
 yolo.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
 ort_session = onnxruntime.InferenceSession(onnx_file_path)
@@ -21,13 +26,42 @@ with open('data.yaml', mode='r') as f:
 labels = data_yaml['names']
 
 # Load YOLO model
-yolo = cv2.dnn.readNetFromONNX('/home/lenovo/temp-image-detec/Model5/weights/best.onnx')
+yolo = cv2.dnn.readNetFromONNX('/home/ahuja/Desktop/menubar-detection/ai-menubar/Model5/weights/best.onnx')
 yolo.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
 yolo.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
 # app.py
 
-# ... (previous code)
+
+def extract_text_from_box(image, box):
+    x, y, w, h = box
+
+    # Ensure the box coordinates are within the image dimensions
+    if x < 0:
+        x = 0
+    if y < 0:
+        y = 0
+    if x + w > image.shape[1]:
+        w = image.shape[1] - x
+    if y + h > image.shape[0]:
+        h = image.shape[0] - y
+
+    # Check if the region is valid
+    if w > 0 and h > 0:
+        roi = image[y:y+h, x:x+w]
+
+        # Convert the region to grayscale
+        gray_roi = cv2.cvtColor(roi, cv2.COLOR_BGR2GRAY)
+
+        # Perform OCR using pytesseract
+        text = pytesseract.image_to_string(gray_roi, config='--psm 6')
+
+        return text.strip()
+    else:
+        return ""
+
+
+
 def get_prediction(image):
     # Get YOLO prediction from the image
     row, col, d = image.shape
@@ -45,7 +79,6 @@ def get_prediction(image):
     
     return preds, input_image, INPUT_WH_YOLO
 
-# ... (previous code)
 
 
 def non_maximum_suppression(preds, input_image, INPUT_WH_YOLO, labels):
@@ -110,7 +143,30 @@ async def detect_objects(file: UploadFile = File(...)):
     index, boxes_np, confidences_np, classes = non_maximum_suppression(preds, input_image, INPUT_WH_YOLO, labels)
     result_image = draw_bounding_boxes(image.copy(), index, boxes_np, confidences_np, classes, labels)
 
+    detected_objects = []  # List to store detected objects' information
+
+    for ind in index:
+        x, y, w, h = boxes_np[ind]
+        bb_conf = int(confidences_np[ind] * 100)
+        class_id = classes[ind]
+        class_name = labels[class_id]
+
+        text = extract_text_from_box(image, boxes_np[ind])
+
+        # Append information to the list
+        detected_objects.append({
+            "class_name": class_name,
+            "confidence": bb_conf,
+            "bounding_box": {"x": x, "y": y, "width": w, "height": h},
+            "extracted_text": text
+        })
+
     _, img_encoded = cv2.imencode('.png', result_image)
-    return StreamingResponse(io.BytesIO(img_encoded.tobytes()), media_type="image/png")
-# To run the FastAPI application, use the following command:
-# uvicorn app:app --reload
+
+    # Convert the detected objects list to a JSON string
+    detected_objects_json = json.dumps(detected_objects)
+
+    # Return the detected objects as JSON in the response headers
+    headers = {"Detected-Objects": detected_objects_json}
+    
+    return StreamingResponse(io.BytesIO(img_encoded.tobytes()), media_type="image/png", headers=headers)
